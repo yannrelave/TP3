@@ -48,7 +48,7 @@ Il est dangereux d'abuser de cet opérateur
 
 **10. Rédigez un autre test dans lequel vous créez le composant `User` avec le `name` de votre choix dans le `props` et vérifiez que le composant affiche bien le `name`.**
 
-``js
+```javascript
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
@@ -76,7 +76,7 @@ it("Vérifie nom", () => {
   const nom = container.textContent;
   console.log(nom);
   expect(nom).toMatch(name);
-});``
+});```
 
 **11. Faites un test de "capture d'instantanés" en suivant les indications de la documentation**
 
