@@ -48,6 +48,35 @@ Il est dangereux d'abuser de cet opérateur
 
 **10. Rédigez un autre test dans lequel vous créez le composant `User` avec le `name` de votre choix dans le `props` et vérifiez que le composant affiche bien le `name`.**
 
+``import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+import App from "./App";
+
+let container = null;
+beforeEach(() => {
+  // met en place un élément DOM comme cible de rendu
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  // nettoie en sortie de test
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+it("Vérifie nom", () => {
+  const name = "Terry"
+  act(() => {
+    render(<App name = {name}/>, container);
+  });
+  const nom = container.textContent;
+  console.log(nom);
+  expect(nom).toMatch(name);
+});``
+
 **11. Faites un test de "capture d'instantanés" en suivant les indications de la documentation**
 
 **12. Proposez 3 autres tests**
