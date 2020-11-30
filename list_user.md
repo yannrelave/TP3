@@ -76,7 +76,8 @@ it("Vérifie nom", () => {
   const nom = container.textContent;
   console.log(nom);
   expect(nom).toMatch(name);
-});```
+});
+```
 
 **11. Faites un test de "capture d'instantanés" en suivant les indications de la documentation**
 
