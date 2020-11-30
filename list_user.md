@@ -81,6 +81,35 @@ it("Vérifie nom", () => {
 
 **11. Faites un test de "capture d'instantanés" en suivant les indications de la documentation**
 
+```javascript
+import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+import App from "./App";
+import pretty from "pretty";
+
+let container = null;
+beforeEach(() => {
+  // met en place un élément DOM comme cible de rendu
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  // nettoie en sortie de test
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+it("Capture d'instantannés", () => {
+  act(() => {
+    render(<App />, container);
+  });
+  expect(pretty(container.innerHTML)).toMatchInlineSnapshot();
+});
+```
+
 **12. Proposez 3 autres tests**
 
 
